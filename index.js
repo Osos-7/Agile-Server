@@ -16,7 +16,7 @@ app.use(cors({
 // app.use(express.json({ limit: "50mb" }));
 // app.use(express.urlencoded({ limit: "50mb", extended: true }))
 app.use(router);
-const uri="mongodb+srv://AhmeddEsmat:UTr6KxKWExyMf3Jm@cluster0.rulxadp.mongodb.net/?retryWrites=true&w=majority";
+const uri="mongodb+srv://OsamaAmr:ZGwOfSDP3lkb7zxg@cluster0.wau8kxm.mongodb.net/?retryWrites=true&w=majority";
 class Database {
   constructor() {
     this._connect()
