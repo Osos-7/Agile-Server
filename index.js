@@ -1,8 +1,8 @@
 const express = require("express"); // express application
-// require("dotenv").config(); // use the env variables
+require("dotenv").config(); // use the env variables
 const mongoose = require("mongoose");
 const path = require("path");
-const router = require("./src/Routes/routes"); // used to handle routes
+const router = require("./src/routes"); // used to handle routes
 const bodyParser=require('body-parser');
 const cors = require('cors')
 
