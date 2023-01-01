@@ -4,12 +4,15 @@ const mongoose = require("mongoose");
 const path = require("path");
 const router = require("./routes"); // used to handle routes
 const bodyParser=require('body-parser');
-// const cors = require('cors')
+const cors = require('cors')
 
 const app = express();
 const PORT = 3000;
 // app.use(express.json());
 app.use(express.json({ limit: "50mb" }));
+app.use(cors({
+  origin:["https://roaring-tulumba-ecc642.netlify.app/"]
+}));
 // app.use(express.json({ limit: "50mb" }));
 // app.use(express.urlencoded({ limit: "50mb", extended: true }))
 app.use(router);
