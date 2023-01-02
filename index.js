@@ -1,35 +1,43 @@
 const express = require("express"); // express application
-require("dotenv").config(); // use the env variables
+// require("dotenv").config(); // use the env variables
 const mongoose = require("mongoose");
 const path = require("path");
-const router = require("./src/routes"); // used to handle routes
-const bodyParser=require('body-parser');
+const router = require("./src/Routes/index.routes"); // used to handle routes
+const bodyParser = require("body-parser");
 const cors = require('cors')
 
 const app = express();
 const PORT = 3000;
 // app.use(express.json());
 app.use(express.json({ limit: "50mb" }));
-app.use(cors({
-  origin:["https://roaring-tulumba-ecc642.netlify.app/"]
-}));
+app.use(
+  cors({
+    origin: [
+      "https://roaring-tulumba-ecc642.netlify.app",
+      "https://roaring-tulumba-ecc642.netlify.app/login",
+      "https://roaring-tulumba-ecc642.netlify.app/signup",
+    ],
+  })
+);
 // app.use(express.json({ limit: "50mb" }));
 // app.use(express.urlencoded({ limit: "50mb", extended: true }))
 app.use(router);
-const uri="mongodb+srv://OsamaAmr:ZGwOfSDP3lkb7zxg@cluster0.wau8kxm.mongodb.net/?retryWrites=true&w=majority";
+const uri =
+  "mongodb+srv://OsamaAmr:ZGwOfSDP3lkb7zxg@cluster0.wau8kxm.mongodb.net/?retryWrites=true&w=majority";
 class Database {
   constructor() {
-    this._connect()
+    this._connect();
   }
-_connect() {
-     mongoose.connect(uri,{useNewUrlParser: true,useUnifiedTopology:true })
-       .then(() => {
-         console.log('MongoDB connection successful');
-         app.listen(PORT)
-       })
-       .catch(err => {
-         console.error('Database connection error')
-       })
+  _connect() {
+    mongoose
+      .connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+      .then(() => {
+        console.log("MongoDB connection successful");
+        app.listen(PORT);
+      })
+      .catch((err) => {
+        console.error("Database connection error");
+      });
   }
 }
 new Database();
@@ -38,13 +46,10 @@ new Database();
 //     console.log(`Listening on port ${PORT}`);
 //   });
 
-app.get('/', function (req, res) {
-res.send('Hello World');
- })
+app.get("/", function (req, res) {
+  res.send("Mangooooo");
+});
 
 app.use((req, res) => {
-    res.status(404).send("Error: routes doesn't exist (-_-)");
-  });
-
-
-
+  res.status(404).send("Error: routes doesn't exist (-_-)");
+});
