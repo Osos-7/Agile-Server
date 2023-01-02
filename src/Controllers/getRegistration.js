@@ -1,6 +1,6 @@
 const User = require("../models/user");
 
-const registerUser = async (req, res) => {
+const getRegistration = async (req, res) => {
   const body = req.body;
   const newUser = new User({
     firstName: body.firstName,
@@ -12,4 +12,4 @@ const registerUser = async (req, res) => {
   res.send("New User Saved");
 };
 
-module.exports = registerUser;
+module.exports = getRegistration;
